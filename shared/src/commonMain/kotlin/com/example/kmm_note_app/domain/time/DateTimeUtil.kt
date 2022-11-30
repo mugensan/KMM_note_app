@@ -1,0 +1,38 @@
+package com.example.kmm_note_app.domain.time
+
+import kotlinx.datetime.*
+
+object DateTimeUtil {
+
+    //getting time from location
+     fun now(): LocalDateTime {
+        return Clock.System.now().toLocalDateTime(TimeZone.currentSystemDefault())
+    }
+
+    //converting time
+    fun toEpochMillis(dateTime: LocalDateTime):Long{
+        return dateTime.toInstant(TimeZone.currentSystemDefault()).toEpochMilliseconds()
+    }
+
+    //formatting date
+    fun formatNoteDate(dateTime: LocalDateTime):String{
+        val year = dateTime.year
+        val month = dateTime.month.name.lowercase().take(3).replaceFirstChar { it.uppercase() }
+        val day = if(dateTime.dayOfMonth<10)"${dateTime.dayOfMonth}" else dateTime.dayOfMonth
+        val hour = if(dateTime.hour<10)"${dateTime.hour}" else dateTime.hour
+        val minute = if(dateTime.minute<10)"${dateTime.minute}" else dateTime.minute
+
+        return buildString {
+            append(month)
+            append(" ")
+            append(day)
+            append(" ")
+            append(year)
+            append(" ")
+            append(hour)
+            append(":")
+            append(minute)
+        }
+    }
+
+}
