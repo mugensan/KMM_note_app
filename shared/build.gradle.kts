@@ -6,7 +6,7 @@ plugins {
 
 kotlin {
     android()
-    
+
     listOf(
         iosX64(),
         iosArm64(),
@@ -18,8 +18,8 @@ kotlin {
     }
 
     sourceSets {
-        val commonMain by getting{
-            dependencies{
+        val commonMain by getting {
+            dependencies {
                 implementation("com.squareup.sqldelight:runtime:1.5.3")
                 implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.4.0")
             }
@@ -29,8 +29,8 @@ kotlin {
                 implementation(kotlin("test"))
             }
         }
-        val androidMain by getting{
-            dependencies{
+        val androidMain by getting {
+            dependencies {
                 implementation("com.squareup.sqldelight:android-driver:1.5.3")
             }
         }
@@ -39,9 +39,10 @@ kotlin {
         val iosArm64Main by getting
         val iosSimulatorArm64Main by getting
         val iosMain by creating {
-            dependencies{
+            dependencies {
                 implementation("com.squareup.sqldelight:native-driver:1.5.3")
             }
+
             dependsOn(commonMain)
             iosX64Main.dependsOn(this)
             iosArm64Main.dependsOn(this)
@@ -59,11 +60,18 @@ kotlin {
     }
 }
 
+sqldelight {
+    database("NoteDatabase") {
+        packageName = "com.example.kmm_note_app.database"
+        sourceFolders = listOf("sqldelight")
+    }
+}
+
 android {
     namespace = "com.example.kmm_note_app"
-    compileSdk = 32
+    compileSdk = 33
     defaultConfig {
-        minSdk = 23
-        targetSdk = 32
+        minSdk = 21
+        targetSdk = 33
     }
 }

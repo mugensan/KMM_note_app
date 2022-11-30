@@ -13,6 +13,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "KMM_note_app"
+rootProject.name = "NoteAppKMM"
 include(":androidApp")
 include(":shared")
