@@ -9,7 +9,7 @@ object DateTimeUtil {
         return Clock.System.now().toLocalDateTime(TimeZone.currentSystemDefault())
     }
 
-    //converting time
+    //converting time to milliseconds
     fun toEpochMillis(dateTime: LocalDateTime):Long{
         return dateTime.toInstant(TimeZone.currentSystemDefault()).toEpochMilliseconds()
     }

@@ -13,6 +13,7 @@ class SearchNotes {
             it.title.trim().lowercase().contains(query.lowercase())||
                     it.content.trim().lowercase().contains(query.lowercase())
         }.sortedBy {
+            //Later date on top of list
             DateTimeUtil.toEpochMillis(it.created)
         }
     }
