@@ -37,21 +37,21 @@ class NoteListViewModel @Inject constructor(
     }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), NoteListState())
 
     //Mock note
-    init {
-        viewModelScope.launch {
-            (1..10).forEach {
-                noteDataSource.insertNote(
-                    Note(
-                        id = null,
-                        title = "Note$it",
-                        content = "Content$it",
-                        colorHex = VioletHex,
-                        created = DateTimeUtil.now()
-                    )
-                )
-            }
-        }
-    }
+//    init {
+//        viewModelScope.launch {
+//            (1..10).forEach {
+//                noteDataSource.insertNote(
+//                    Note(
+//                        id = null,
+//                        title = "Note$it",
+//                        content = "Content$it",
+//                        colorHex = VioletHex,
+//                        created = DateTimeUtil.now()
+//                    )
+//                )
+//            }
+//        }
+//    }
 
     //loading our notes, coroutine
     fun loadNotes() {
